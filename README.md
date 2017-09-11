@@ -14,7 +14,7 @@
       <ul>
         <li>-p {tcp_port_number}</li>
         <li>-u {udp_port_number}</li>
-        <li>-n <'udp://my.neighbour.1:{port_number_neighbour1','udp://my.neighbour.2:{port_number_neighbour2'></li>
+        <li>-n <'udp://my.neighbour.1:{port_number_neighbour1}','udp://my.neighbour.2:{port_number_neighbour2}'></li>
         <li>--testnet false</li>
       <ul>
     </ul>
