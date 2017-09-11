@@ -1,0 +1,49 @@
+group 'OruMesh'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/groups/public/"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'
+    compile group: 'org.ini4j', name: 'ini4j', version: '0.5.1'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
+    compile group: 'org.rocksdb', name: 'rocksdbjni', version: '5.7.3'
+    compile group: 'com.sanityinc', name: 'jargs', version: '2.0-SNAPSHOT'
+    compile group: 'io.undertow', name: 'undertow-servlet', version: '2.0.0.Alpha1'
+    compile 'commons-codec:commons-codec:1.8'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+}
+
+jar {
+    manifest {
+        attributes (
+                'Main-Class': 'com.jicstech.orumesh.Driver'
+        )
+    }
+}
+
+task fatJar (type: Jar){
+    manifest.from(jar.manifest)
+    classifier = 'all'
+    from {
+        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
+}
