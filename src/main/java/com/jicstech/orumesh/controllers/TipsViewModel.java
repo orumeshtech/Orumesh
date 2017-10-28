@@ -24,7 +24,8 @@ public class TipsViewModel {
 
     public boolean addTipHash (Hash hash) throws ExecutionException, InterruptedException {
         synchronized (sync) {
-            return tips.add(hash);
+           
+             return tips.add(hash);
         }
     }
 
