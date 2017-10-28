@@ -17,6 +17,7 @@ import java.util.prefs.Preferences;
  */
 public class Configuration {
     private Ini ini;
+    
     private Preferences prefs;
 
 
